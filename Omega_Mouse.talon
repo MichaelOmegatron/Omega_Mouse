@@ -1,0 +1,1 @@
+toggle omega mouse: user.omega_mouse_toggle()
