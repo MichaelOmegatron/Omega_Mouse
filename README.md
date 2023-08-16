@@ -1,7 +1,7 @@
 # Omega_Mouse
 
 ### Shout Outs:
-Shout out to Aegis, chaossparrot, Andreas Arvidsson, TimoTimo, Tommy Pensyl, Ziemowit Musiatowicz, and everyone at the Talon Slack channel for being so helpful and answering my rookie questions. Talon Slack channel can be found here: (https://talonvoice.com/chat)
+Shout out to Aegis, chaossparrot, Andreas Arvidsson, TimoTimo, Tommy Pensyl, Ziemowit Musiatowicz, and everyone at the Talon Slack channel for being so helpful and answering my rookie questions. Talon Slack channel can be found here: https://talonvoice.com/chat
 
 ## What is Omega Mouse:
 Omega Mouse is an alternative way to interact with Control Mouse in Talon Voice. It’s basically just turning Gaze and Head tracking on and off at different times to change the user experience working hands-free. So, it’s a simple user set that’s not very complex or robust.
@@ -71,31 +71,31 @@ The decision to make popping the primary cursor movement command across all thre
 To choose which mode to use: Open the Omega_Mouse.talon file -> change the “user.omega_mouse_mode” setting number to 0 (Full mode), 1 (Lite mode), or 2 (basic mode) -> save the file -> If Omega Mouse was active when you made these changes, you must restart Omega Mouse to pick up the change.
 
 ### 3 Modes Explained:
-FULL MODE: Moving the cursor and left clicking are done in a 2-phase process (like Zoom Mouse) with a popping sound. The first pop moves the cursor to your gaze (and enables Head tracking). The second pop left clicks (and disables Head tracking). Actions like clicking or starting a drag will leave your cursor still.
+**FULL MODE:** Moving the cursor and left clicking are done in a 2-phase process (like Zoom Mouse) with a popping sound. The first pop moves the cursor to your gaze (and enables Head tracking). The second pop left clicks (and disables Head tracking). Actions like clicking or starting a drag will leave your cursor still.
 
 This process changes if you are dragging. While dragging with the mouse, popping merely moves the cursor, but does not click. To release dragging, the drop command (drop / drag end / end drag) must be invoked. This was done to simplify undoing a decision to drag by simply popping back to where you started and releasing. Otherwise, you could get caught in the 2-phase process.
 
-LITE MODE: Moving the cursor and left click are separated into two separate commands. Moving the cursor is done by a pop. Left click is done by saying “yum” or “gum”. Actions like clicking or starting a drag will leave your cursor still.
+**LITE MODE:** Moving the cursor and left click are separated into two separate commands. Moving the cursor is done by a pop. Left click is done by saying “yum” or “gum”. Actions like clicking or starting a drag will leave your cursor still.
 
 The decision to settle on yum/gum came from observing the position of your tongue pre and post popping sound. The combination of popping and saying “yum” created a natural loop of commands that I found comfortable to run back-to-back. In order to pop, the back of your tongue has to block the passage of your throat to create a “cave” or “vacuum” for the pop sound to produce. After you make a popping sound, your mouth remains open, but your tongue is still at the back of your throat. Having a sound that starts from the back of your throat is the most natural next sound to make (which I find “yum” to satisfy), and which most likely will need to be a left click. Likewise, to start another pop sound, you want your lips to start together, which the M ending in “yum” provides.
 
-BASIC MODE: The same as Lite Mode except actions like clicking or starting a drag will not leave your cursor still, but instead keep using Head Tracking. Essentially Control Mouse without eye gaze on all the time.
+**BASIC MODE:** The same as Lite Mode except actions like clicking or starting a drag will not leave your cursor still, but instead keep using Head Tracking. Essentially Control Mouse without eye gaze on all the time.
 
 
 ## Omega Mouse Commands:
 There are 13 commands associated with Omega Mouse, whose behavior changes based on the mode they are in. Images of command logic flow charts are provided at the bottom for a (messy) visual reference.
 
-Note: By default, Omega Mouse requires you to use “yum” or “gum” for left click (lite/basic modes) and twill for double click (all modes). Omega Mouse overrides some community repo functions to work with the community voice commands you might be familiar with. But the community voice commands for left click and double click do not use functions easily overridden. To minimize editing the community repo on the user end, new functions had to be created to maintain Omega Mouse behavior, hence “yum/gum” and “twill”. If you have custom voice commands, they will need to be reconciled with the Omega Mouse functions.
+*Note: By default, Omega Mouse requires you to use “yum” or “gum” for left click (lite/basic modes) and twill for double click (all modes). Omega Mouse overrides some community repo functions to work with the community voice commands you might be familiar with. But the community voice commands for left click and double click do not use functions easily overridden. To minimize editing the community repo on the user end, new functions had to be created to maintain Omega Mouse behavior, hence “yum/gum” and “twill”. If you have custom voice commands, they will need to be reconciled with the Omega Mouse functions.*
 
 ### Voice Commands
-- Omega Mouse: Toggles Omega Mouse on/off. Accesses mode value when turning on.
-- Omega Restart: Sets Omega Mouse to initial states. Re-captures mode value.
-- Control Mouse: Turns Omega Mouse off and switches to default Control Mouse
+- **Omega Mouse:** Toggles Omega Mouse on/off. Accesses mode value when turning on.
+- **Omega Restart:** Sets Omega Mouse to initial states. Re-captures mode value.
+- **Control Mouse:** Turns Omega Mouse off and switches to default Control Mouse
   - See “Set-Up” section to make sure mouse.py edits are done correctly
-- Zoom Mouse: Turns Omega Mouse off and switches to default Zoom Mouse
+- **Zoom Mouse:** Turns Omega Mouse off and switches to default Zoom Mouse
   - See “Set-Up” section to make sure mouse.py edits are done correctly
 
-- *Popping sound*:
+- ***Popping sound*:**
   - Full Mode:
     - Phase 1: Moves cursor.
     - Phase 2: Left Click. (Freeze cursor.)
@@ -106,7 +106,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Moves cursor
   - Omega Mouse Off:
     - Community default left click
-- Yum / Gum:
+- **Yum / Gum:**
   - Full Mode:
     - Left click. (Freeze cursor)
   - Lite Mode:
@@ -115,7 +115,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Left click.
   - Omega Mouse Off:
     - Left Click.
-- Yummer / Gummer:
+- **Yummer / Gummer:**
   - Full Mode:
     - Left click + release modifier keys (Freeze Cursor)
   - Lite Mode:
@@ -124,7 +124,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Left click + release modifier keys
   - Omega Mouse Off:
     - Left click + release modifier keys (Freeze Cursor)
-- Twill
+- **Twill:**
   - Full Mode:
     - Double click (Freeze cursor)
   - Lite Mode:
@@ -133,7 +133,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Double click
   - Omega Mouse Off:
     - Double click
-- Nudge:
+- **Nudge:**
   - Full Mode:
     - Skips Gaze tracking to immediately use Head tracking for small adjustments.
   - Lite Mode:
@@ -142,7 +142,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Does nothing
   - Omega Mouse Off:
     - Does nothing
-- Wait:
+- **Wait:**
   - Full Mode:
     - Freezes cursor. (Does not release drag or modifier keys)
   - Lite Mode:
@@ -151,7 +151,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Freezes cursor. (Does not release drag or modifier keys)
   - Omega Mouse Off:
     - Does nothing
-- Drag:
+- **Drag:**
   - Full Mode:
     - Starts a left mouse button hold. (Freezes cursor) (Alters 2-phase behavior)
   - Lite Mode:
@@ -160,7 +160,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Starts a left mouse button hold.
   - Omega Mouse Off:
     - Community default drag
-- Drop / Drag End / End Drag:
+- **Drop / Drag End / End Drag:**
   - Full Mode:
     - Releases all mouse buttons + Modifier keys. (Freezes cursor)
   - Lite Mode:
@@ -169,7 +169,7 @@ Note: By default, Omega Mouse requires you to use “yum” or “gum” for lef
     - Releases all mouse buttons + Modifier keys.
   - Omega Mouse Off:
     - Community default drag end
-- Omega Check State:
+- **Omega Check State:**
   - Full Mode:
     - Prints state of variables and tags in Talon log viewer (for troubleshooting)
   - Lite Mode:
