@@ -16,38 +16,38 @@ There is also a “hidden” eye tracking mode in Talon Voice since the 0.4 rele
 
 ## Who is Omega Mouse For:
 Omega Mouse may be for you if:
--	You have to use one eye tracking instead of both eye tracking (this results in a jittery mouse)
--	Your blinking normally throws your cursor off to an unsatisfactory degree
--	You don’t want the cursor constantly following your Gaze.
--	You like Zoom Mouse but wish it had head tracking functionality.
+- You have to use one eye tracking instead of both eye tracking (this results in a jittery mouse)
+- Your blinking normally throws your cursor off to an unsatisfactory degree
+- You don’t want the cursor constantly following your Gaze.
+- You like Zoom Mouse but wish it had head tracking functionality.
 
 ## Requirements:
--	Talon Voice 0.4 public release (I’m subscribed to the beta, but the 0.4 release should include the required functionality.)
--	Talon Community Repo Installed: 
--	Tobii Eye Tracker 5
--	A Microphone.
-o	Recommended mics for Talon Voice here: https://talon.wiki/hardware/
-o	I’m using a cheap usb Koss CS-100. It works okay, but is prone to misidentifying commands.
+- Talon Voice 0.4 public release (I’m subscribed to the beta, but the 0.4 release should include the required functionality.)
+- Talon Community Repo Installed: https://github.com/talonhub/community
+- Tobii Eye Tracker 5
+- A Microphone.
+	- Recommended mics for Talon Voice here: https://talon.wiki/hardware/
+	- I’m using a cheap usb Koss CS-100. It works okay, but is prone to misidentifying commands.
 
 ## Set-Up:
-To use Omega Mouse with unintended cursor warping, use single eye tracking. The hidden feature (mentioned in “Control Mouse vs Omega Mouse”) cannot be disabled at the moment. But usually doesn’t work with single eye tracking, making it the most reliable way to “disable” it so Omega Mouse can work as intended.
+To use Omega Mouse without unintended cursor warping, use single eye tracking. The hidden feature (mentioned in “Control Mouse vs Omega Mouse”) cannot be disabled at the moment. But usually doesn’t work with single eye tracking, making it the most reliable way to “disable” it so Omega Mouse can work as intended.
 
-In order for Omega Mouse to maintain its proper functionality as error free as possible, mouse.talon must be edited in the community repo. The functions in Eye_Tracking_Switches.py ("control_mouse_switch()" & "zoom_mouse_switch()") must be placed into mouse.talon for the rules Control Mouse and Zoom Mouse respectively. If you want to keep the original commands intact to revert to them easily later if you ever remove Omega Mouse, add a "#" before the commands that were
+In order for Omega Mouse to maintain its proper functionality as error free as possible, mouse.talon must be edited in the community repo. The functions in [Eye_Tracking_Switches.py](Eye_Tracking_Switches.py) (*control_mouse_switch()* & *zoom_mouse_switch()*) must be placed into mouse.talon for the rules Control Mouse and Zoom Mouse respectively. If you want to keep the original commands intact to revert to them easily later if you ever remove Omega Mouse, add a "#" before the commands that were
 there before to deactivate them. It should look like this in mouse.py:
-
-control mouse: 
+```
+control mouse:
 	# tracking.control_toggle()
 	user.control_mouse_switch()
 zoom mouse:
 	# tracking.control_zoom_toggle()
 	user.zoom_mouse_switch()
-
+```
 Note: Updating the community repo in the future will require you to either re-edit the mouse.py file, or resolve these merge conflicts if using Git. These edits allow Omega Mouse to turn off it’s behavior when switching to default Control Mouse or Zoom Mouse. Without these edits, if you were to switch to one of these modes from Omega Mouse, remnant behavior may continue and interfere.
 
-Also Note: Omega Mouse must be switched to-and-from verbally. Using the menu with your mouse will bypass the switches in the code, leading to unintended behavior.
+Also Note: Omega Mouse must be switched to-and-from ***VERBALLY***. Using the Talon menu with your mouse will bypass the switches in the code, leading to unintended behavior.
 
 ### For Mac Users:
-I don't have a Mac, so I have not tested this code on a Mac. But I assume it will work all the same. However, you will at least need to replace the "alt" key with "cmd" key in the function "omega_mouse_modifiers_release_function" found in the Omega_Mouse.py file.
+I don't have a Mac, so I have not tested this code on a Mac. But I assume it will work all the same. However, you will at least need to replace the "alt" key with "cmd" key in the function "omega_mouse_modifiers_release_function" found in the [Omega_Mouse.py](Omega_Mouse.py) file.
 
 
 ## 3 Mode Summary:
@@ -68,7 +68,7 @@ BASIC MODE
 The decision to make popping the primary cursor movement command across all three modes (instead of the primary clicking command) came from noticing that moving the mouse needs to be an immediate response to feel satisfying. Clicking is easier to have patience for since you’re hovering over your target already while you wait for Talon to parse your voice command.
 
 ### Changing modes:
-To choose which mode to use: Open the Omega_Mouse.talon file -> change the “user.omega_mouse_mode” setting number to 0 (Full mode), 1 (Lite mode), or 2 (basic mode) -> save the file -> If Omega Mouse was active when you made these changes, you must restart Omega Mouse to pick up the change.
+To choose which mode to use: Open the [Omega_Mouse.talon](Omega_Mouse.talon) file -> change the “user.omega_mouse_mode” setting number to 0 (Full mode), 1 (Lite mode), or 2 (basic mode) -> save the file -> If Omega Mouse was active when you made these changes, you must restart Omega Mouse to pick up the change.
 
 ### 3 Modes Explained:
 **FULL MODE:** Moving the cursor and left clicking are done in a 2-phase process (like Zoom Mouse) with a popping sound. The first pop moves the cursor to your gaze (and enables Head tracking). The second pop left clicks (and disables Head tracking). Actions like clicking or starting a drag will leave your cursor still.
@@ -92,8 +92,10 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 - **Omega Restart:** Sets Omega Mouse to initial states. Re-captures mode value.
 - **Control Mouse:** Turns Omega Mouse off and switches to default Control Mouse
   - See “Set-Up” section to make sure mouse.py edits are done correctly
+  - Remember, switching out of Omega Mouse must be done *verbally* to turn it off correctly
 - **Zoom Mouse:** Turns Omega Mouse off and switches to default Zoom Mouse
   - See “Set-Up” section to make sure mouse.py edits are done correctly
+  - Remember, switching out of Omega Mouse must be done *verbally* to turn it off correctly
 
 - ***Popping sound*:**
   - Full Mode:
@@ -178,4 +180,6 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
     - Prints state of variables and tags in Talon log viewer (for troubleshooting)
   - Omega Mouse Off:
     - Does nothing
+
+## Omega Mouse Logic Flow Chart for visual reference
 
