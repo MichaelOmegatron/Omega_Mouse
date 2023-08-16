@@ -1,94 +1,189 @@
-from talon import Module, Context, noise, actions
+# Ask community if 1 file or 5. Is 5 more taxing? More expensive?
+from talon import Module, Context, actions, ctrl
 
 mod = Module()
-# Creates tag for when Omega Mouse state is On
 mod.tag("om_on", desc="Signals Omega Mouse is toggled on")
+mod.tag("omega_full", desc="Signals Full Mode is active")
+mod.tag("omega_lite", desc="Signals Lite Mode is active")
+mod.tag("omega_basic", desc="Signals Basic Mode is active")
 
-#def on_pop(active):
-#    print("pop")
-#noise.register("pop", on_pop)
-
-# NOTE: Every user defined tag needs to be prefixed with user. , so mm_on becomes user.mm_on and so on.
-# Only talon defined tags like browser can be used without a user. prefix.
-# Context for Omega Mouse commands
 ctx = Context()
-ctx_om_on = Context()
-ctx_om_on.matches = """
+ctx_switch = Context()
+ctx_switch.matches = """
 tag: user.om_on
 """
 
-# Define a variable to control noise_pop phase
+
+# ---------- Variables ----------
+om_state = False
 first_pop_done = False
 
-om_state = False
 
-# Limit Omega Mouse toggle to only when omega_mouse_permission exists. Real function.
-# When Omega Mouse toggles on, Gaze and Head tracking are set off. When Omega Mouse
-# toggles off, Gaze and Head tracking are set to on.
-def omega_mouse_toggle_function():
-    global om_state
-    if actions.tracking.control_enabled() == True:
-        if om_state == False:
-            om_state = True
-            actions.tracking.control_gaze_toggle(False)
-            actions.tracking.control_head_toggle(False)
-            ctx.tags = ["user.om_on"]
-            print("om_state is now set to True. user.om_on tag is enabled")
-        else:
-            om_state = False
-            actions.tracking.control_gaze_toggle(True)
-            actions.tracking.control_head_toggle(True)
-            ctx.tags = []
-            print("om_state is now set to False. user.om_on tag has been disabled")
-    else:
-        print("Function only available when Control Mouse is active")
-        om_state = False
+# ---------- Settings ----------
+setting_omega_mouse_mode = mod.setting(
+    "omega_mouse_mode",
+    type=int,
+    default=0,
+    desc="Determines which mode of Omega Mouse to use. 0 = Full. 1 = Lite. 2 = Basic"
+    )
 
+
+
+# ========== NON-CALLABLE FUNCTIONS ==========
+
+# Releases all modifier keys (Mac users need to replace "alt:up" with "cmd:up")
+def omega_mouse_modifiers_release_function():
+    actions.key("ctrl:up")
+    actions.key("shift:up")
+    actions.key("alt:up")
+    actions.key("super:up")
+    #actions.key("cmd:up")
+
+
+
+# ========== CALLABLE FUNCTIONS ==========
 @mod.action_class
-class Actions:
-
-    def omega_mouse_toggle():
-        """Toggle the Omega Mouse functionality, but only if the control mouse is enabled"""
-        omega_mouse_toggle_function()
-
-# Phase 1: Pop sound enables gaze control briefly to move cursor > gaze control disables >
-#          Head tracking enables > removes before tag > Enables tag for second click.
-# Phase 2: Pop sound left clicks > turns off head tracking > removes after tag >
-#          Enables tag for first click.
-@ctx_om_on.action_class("user")
 class OmegaMouseActions:
 
-    def noise_trigger_pop():
-        """First pop toggles head tracking, second pop confirms click"""
+    def omega_mouse_toggle():
+        """Toggles Omega Mouse on/off. When toggling on, checks for mode value."""
+        global om_state
         global first_pop_done
-        if first_pop_done == False:
-            """Move cursor to gaze then switch to head tracking"""
+        
+        if om_state == False:
+            om_state = True
+            omega_mode = setting_omega_mouse_mode.get()
+            if omega_mode == 0:
+                actions.tracking.control_toggle(True)
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(False)
+                actions.tracking.control_zoom_toggle(False)
+                first_pop_done = False
+                ctx.tags = ["user.om_on", "user.omega_full"]
+                print(f"Full mode. First pop = {first_pop_done}. tags = {list(ctx.tags)}")
+            elif omega_mode == 1:
+                actions.tracking.control_toggle(True)
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(False)
+                actions.tracking.control_zoom_toggle(False)
+                ctx.tags = ["user.om_on", "user.omega_lite"]
+                print(f"Lite mode. First pop = {first_pop_done}. tags = {list(ctx.tags)}")                
+            elif omega_mode == 2:
+                actions.tracking.control_toggle(True)
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(True)
+                actions.tracking.control_zoom_toggle(False)
+                ctx.tags = ["user.om_on", "user.omega_basic"]
+                print(f"Basic mode. First pop = {first_pop_done}. tags = {list(ctx.tags)}")
+        else:
+            om_state = False
+            actions.tracking.control_toggle(False)
             actions.tracking.control_gaze_toggle(True)
-            actions.sleep("50ms")
-            actions.tracking.control_gaze_toggle(False)
-            actions.sleep("50ms")
             actions.tracking.control_head_toggle(True)
-            first_pop_done = True
-        elif first_pop_done == True:
-            """Left click and disable head tracking"""
-            actions.mouse_click(0)
-            actions.tracking.control_head_toggle(False)
+            actions.tracking.control_zoom_toggle(False)
             first_pop_done = False
+            ctx.tags = []
+            print(f"Omega Mouse off. First pop = {first_pop_done}. tags = {list(ctx.tags)}")
+                
+    def omega_mouse_restart():
+        """Resets Omega Mouse to initial state. Re-checks mode value."""
+        global om_state
+        global first_pop_done
+        
+        if om_state == True:
+            omega_mode = setting_omega_mouse_mode.get()
+            if omega_mode == 0:
+                actions.tracking.control_toggle(True)
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(False)
+                actions.tracking.control_zoom_toggle(False)
+                first_pop_done = False
+                ctx.tags = ["user.om_on", "user.omega_full"]
+                print(f"Full mode. First pop = {first_pop_done}. tags = {list(ctx.tags)}")
+            elif omega_mode == 1:
+                actions.tracking.control_toggle(True)
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(False)
+                actions.tracking.control_zoom_toggle(False)
+                ctx.tags = ["user.om_on", "user.omega_lite"]
+                print(f"Lite mode. First pop = {first_pop_done}. tags = {list(ctx.tags)}")                
+            elif omega_mode == 2:
+                actions.tracking.control_toggle(True)
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(True)
+                actions.tracking.control_zoom_toggle(False)
+                ctx.tags = ["user.om_on", "user.omega_basic"]
+                print(f"Basic Mode. First pop = {first_pop_done}. tags = {list(ctx.tags)}")                
+        else:
+            pass
+    
+    def omega_mouse_left_click():
+        """Normal Left Click when Omega Mouse is off"""
+        actions.mouse_click(0)
+    
+    def omega_mouse_left_modup_click():
+        """Left Click that releases modifier keys afterwards"""
+        actions.mouse_click(0)
+        omega_mouse_modifiers_release_function()
+    
+    def omega_mouse_double_click():
+        """Normal Double Click when Omega Mouse is off"""
+        actions.mouse_click(0)
+        actions.mouse_click(0)
+    
+    def omega_mouse_nudge():
+        """Does nothing when Omega Mouse is off"""
+        print("Does nothing when Omega Mouse is off")
+    
+    def omega_mouse_wait():
+        """Does nothing when Omega Mouse is off"""
+        print(Does nothing when Omega Mouse is off)
+    
+    def omega_mouse_state_check():
+        """Checks state of Omega Mouse"""
+        print("Omega Mouse states listed below...")
+        print("om_state =", om_state)
+        print("tags =", list(ctx.tags))
+        print("first_pop_done =", first_pop_done)
+        print(f"Drag State = {len(ctrl.mouse_buttons_down()) != 0}")
+        #print(f" - Left Drag = {0 in list(ctrl.mouse_buttons_down())}")
+        #print(f" - Middle Drag = {2 in list(ctrl.mouse_buttons_down())}")
+        #print(f" - Right Drag = {1 in list(ctrl.mouse_buttons_down())}")
 
 
-# While OM is active, command "control mouse" should reactivate gaze and head tracking, and switch 
-# controll mouse off.
-#   def control_mouse_toggle()
-#       actions.tracking.control_mouse(False)
-#       actions.tracking.control_gaze_toggle(True)
-#       actions.tracking.control_head_toggle(True)
-#
-#
 
-# Still need to add context for control mouse while Omega Mouse is active so that
-# gaze and head control both turn back on after I say "control mouse" to close it.
-# I just want the command "control mouse" to also set gaze and head control to on.
+# ========== OVERRIDDEN FUNCTIONS ==========
+@ctx_switch.action_class("user")
+class OmegaMouseOverrides:
 
-# Why does omega_mouse_toggle need to exist seperately to house omega_mouse_toggle_function?
-# Can we skip the middle man? Why do i need to call the prior to get to the later?
-# Can i just call the later directly?
+    # Turns off Omega Mouse states first before setting Control Mouse to default active state.
+    # Helps to insure other eye tracking modes work as intended
+    # (with no active remnants from Omega Mouse)
+    def control_mouse_switch():
+        """Turns off Omega Mouse first before switching to Control Mouse."""
+        global om_state
+        om_state = False
+        actions.tracking.control_toggle(True)
+        actions.tracking.control_gaze_toggle(True)
+        actions.tracking.control_head_toggle(True)
+        actions.tracking.control_zoom_toggle(False)
+        first_pop_done = False
+        ctx.tags = []
+        print("""Omega Mouse switched to Control Mouse. 'om_state' is now set to False.
+              Omega Mouse tags are disabled.""")
+    
+    # Turns off Omega Mouse and Control Mouse first before setting Zoom Mouse to
+    # default active state. Helps to insure other eye tracking modes work as intended
+    # (with no active remnants from Omega Mouse)
+    def zoom_mouse_switch():
+        """Turns off Omega Mouse first before switching to Zoom Mouse."""
+        global om_state
+        om_state = False
+        actions.tracking.control_toggle(False)
+        actions.tracking.control_gaze_toggle(True)
+        actions.tracking.control_head_toggle(True)
+        actions.tracking.control_zoom_toggle(True)
+        first_pop_done = False
+        ctx.tags = []
+        print("""Omega Mouse switched to Zoom Mouse.'om_state' is now set to False.
+              Omega Mouse tags are disabled.""")
