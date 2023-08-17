@@ -182,11 +182,10 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
     - Does nothing
 
 ## Omega Mouse Logic Flow Chart for visual reference
-![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/7b5d6dda-80b9-4428-9e36-0061128bc37f)
+![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/842e4ca7-2ef9-4857-b06f-3d39e86c140d)
 
-![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/80ed3d2b-d49c-4583-801f-b56e39107d9e)
+![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/7b01cc4a-6683-4830-abab-6c257cb1d4d7)
 
-![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/80766659-79b2-4037-b41b-b45c0ecb9ef0)
+![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/45c5c833-b696-450f-981e-4bb5f9111b63)
 
-![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/1067f1f5-f65e-454b-a345-109e5243c21c)
-
+![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/f02f1a71-9a9c-4bef-8080-23f4a6a4f77e)
