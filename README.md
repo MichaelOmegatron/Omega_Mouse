@@ -89,7 +89,9 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 
 *Note: By default, Omega Mouse requires you to use “yum” or “gum” for left click (lite/basic modes) and twill for double click (all modes). Omega Mouse overrides some community repo functions to work with the community voice commands you might be familiar with. But the community voice commands for left click and double click do not use functions easily overridden. To minimize editing the community repo on the user end, new functions had to be created to maintain Omega Mouse behavior, hence “yum/gum” and “twill”. If you have custom voice commands, they will need to be reconciled with the Omega Mouse functions.*
 
-### Voice Commands
+*Also Note: If you map mouse dragging to a physical switch, the altered popping state in Full mode will still work. But once you release the drag, head tracking (Phase 2) will be active. So you will need to end Phase 2.*
+
+### Voice Commands List:
 - **Omega Mouse:** Toggles Omega Mouse on/off. Accesses mode value when turning on.
 - **Omega Restart:** Sets Omega Mouse to initial states. Re-captures mode value.
 - **Control Mouse:** Turns Omega Mouse off and switches to default Control Mouse
