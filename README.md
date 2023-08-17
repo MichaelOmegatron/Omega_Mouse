@@ -9,6 +9,8 @@ Omega Mouse is an alternative way to interact with Control Mouse in Talon Voice.
 ## Design Purpose:
 The purpose was to get away from Control Mouse having the Gaze Tracking on all the time, as a few factors made this feature uncomfortable for me. First, I found the cursor constantly following my Gaze to be difficult on my eyes. Second, I have keratoconus in one eye, meaning I have to use single-eye tracking, which introduces more jitter to the cursor. And third, I found blinking to heavily displace the cursor by shooting it to the bottom of the screen. This later issue did not seem to be prevented by Control Mouse’s internal pause-Gaze function consistently enough, which led to unsustainable eye strain. These issues could very well be personal biological issues I have with my eyes, or my setup at home. And though something like toggling the eye tracking with a shortcut could help with my first issue, I found these discomforts problematic enough to try and code my own preferred method of solving these obstacles.
 
+This was designed with basic computer navigation in mind. It's probably too clunky for gaming purposes, like real-time RTS games. But I think it works well enough for turn-based games that preimarily rely on a cursor.
+
 ## Control Mouse vs Omega Mouse Disclaimer:
 That said, I am not a coder, so I’m sure the code is not very advanced. In general, I do recommend you use the default Control Mouse in Talon Voice if possible. It will give you the most efficient and fluid experience of working hands-free. Omega Mouse is clunky, and was made for the niche audience of myself. If I could use Control Mouse effectively, I would. But my personal preferences and situation made Control Mouse uncomfortable to use. So, if you cannot use Control Mouse very well for whatever reason, like me, you can give Omega Mouse a try.
 
@@ -138,6 +140,7 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 - **Nudge:**
   - Full Mode:
     - Skips Gaze tracking to immediately use Head tracking for small adjustments.
+    - (Somewhat redundant since popping while looking near cursor does the same thing, if not faster.)
   - Lite Mode:
     - Does nothing
   - Basic Mode:
