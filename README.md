@@ -32,7 +32,7 @@ If you are a Talon Voice user, Omega Mouse may be for you if:
 	- I’m using a cheap usb Koss CS-100. It works okay, but is prone to misidentifying commands.
 
 ## Set-Up:
-To use Omega Mouse without unintended cursor warping, use single eye tracking. A "hidden" eye-tracking feature (mentioned in “Control Mouse vs Omega Mouse Disclaimer" above) cannot be disabled at the moment. But usually doesn’t work with single eye tracking, making it the most reliable way to “disable” it so Omega Mouse can work as intended.
+To use Omega Mouse without unintended cursor warping, use single eye tracking. A "hidden" eye-tracking feature (mentioned in [Control Mouse vs Omega Mouse Disclaimer](#control-mouse-vs-omega-mouse-disclaimer) above) cannot be disabled at the moment. But usually doesn’t work with single eye tracking, making it the most reliable way to “disable” it so Omega Mouse can work as intended.
 
 In order for Omega Mouse to maintain its proper functionality as error free as possible, mouse.talon must be edited in the community repo. The functions in [Eye_Tracking_Switches.py](Eye_Tracking_Switches.py) (*control_mouse_switch( )* & *zoom_mouse_switch( )*) must be placed into mouse.talon for the rules Control Mouse and Zoom Mouse respectively. If you want to keep the original commands intact to revert to them easily later (in case you ever remove Omega Mouse), add a "#" before the commands that are there by default to deactivate them. It should look like this in mouse.py:
 ```
@@ -104,10 +104,10 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 - **Omega Mouse:** Toggles Omega Mouse on/off. Captures mode value when turning on.
 - **Omega Restart:** Sets Omega Mouse to initial states. Re-captures mode value.
 - **Control Mouse:** Turns Omega Mouse off and switches to default Control Mouse
-  - See “Set-Up” section to make sure mouse.py edits are done correctly
+  - See [Set-Up](#set-up) section to make sure mouse.py edits are done correctly
   - Remember, switching out of Omega Mouse must be done *verbally* to turn it off correctly
 - **Zoom Mouse:** Turns Omega Mouse off and switches to default Zoom Mouse
-  - See “Set-Up” section to make sure mouse.py edits are done correctly
+  - See [Set-Up](#set-up) section to make sure mouse.py edits are done correctly
   - Remember, switching out of Omega Mouse must be done *verbally* to turn it off correctly
 
 - ***Popping sound*:**
