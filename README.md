@@ -1,7 +1,7 @@
 # Omega Mouse (for Talon Voice)
 
 ### Shout Outs:
-Shout out to Aegis, chaossparrot, Andreas Arvidsson, TimoTimo, Tommy Pensyl, Ziemowit Musiatowicz, and everyone at the Talon Slack channel for being so helpful and answering my rookie questions. Talon Slack channel can be found here: https://talonvoice.com/chat
+Shout out to Aegis, chaossparrot, Andreas Arvidsson, TimoTimo, Tommy Pensyl, Ziemowit Musiatowicz, and everyone at the Talon Slack channel who asnwered my rookie questions for being so patient. I learned a lot! Talon Slack channel can be found here: https://talonvoice.com/chat
 
 ## What is Omega Mouse:
 Omega Mouse is an alternative way to interact with Control Mouse in Talon Voice. It’s basically just turning Gaze and Head tracking on and off at different times to change the user experience working with a hands-free mouse. It’s a simple user set that’s not very complex or robust.
@@ -12,7 +12,7 @@ The purpose was to get away from Control Mouse having the Gaze Tracking on all t
 This was designed with basic computer navigation in mind. It's probably too clunky for gaming purposes, like real-time RTS games. But I think it works well enough for turn-based games that primarily rely on a cursor.
 
 ## Control Mouse vs Omega Mouse Disclaimer:
-I am not a coder, so I’m sure the code is not very advanced. In general, I do recommend you use the default Control Mouse in Talon Voice if possible. It will give you the most efficient and fluid experience of working hands-free. Omega Mouse is clunky, and was made for the niche audience of myself (and others in a similar situation). If I could use Control Mouse effectively, I would. But my personal preferences and situation made Control Mouse uncomfortable to use. So, if you cannot use Control Mouse for whatever reason, like me, you can give Omega Mouse a try.
+**I am not a coder**, so I’m sure the code is not very advanced. In general, I do recommend you use the default Control Mouse in Talon Voice if possible. It will give you the most efficient and fluid experience of working hands-free. Omega Mouse is clunky, and was made for the niche audience of myself (and others in a similar situation). If I could use Control Mouse effectively, I would. But my personal preferences and situation made Control Mouse uncomfortable to use. So, if you cannot use Control Mouse for whatever reason, like me, you can give Omega Mouse a try.
 
 There is also a “hidden” eye tracking mode in Talon Voice since the 0.4 release you can try first. Set Control Mouse on, Gaze Tracking off, Head Tracking on. When you look away from your cursor and move your head, the cursor will warp to your gaze. So even if the default Control mouse functionality doesn’t work for you, this might. However, I have found that 95% of the time it doesn’t really work with single eye tracking (like I have to use). Once in a while it picks up your eye gaze and shoots the cursor there, even if that was not your intention. But with 2 eye tracking, it’s fairly consistent. There is no way to disable this feature at the moment. This means it may interfere with your use of Omega Mouse. If you want to use Omega Mouse the way it was intended, I recommend you use single Eye tracking to minimize this cursor warping.
 
