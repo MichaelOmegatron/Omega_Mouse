@@ -1,4 +1,3 @@
-# Ask community if 1 file or 5. Is 5 more taxing? More expensive?
 from talon import Module, Context, actions, ctrl
 
 mod = Module()
@@ -28,9 +27,7 @@ setting_omega_mouse_mode = mod.setting(
     )
 
 
-
 # ========== NON-CALLABLE FUNCTIONS ==========
-
 # Releases all modifier keys (Mac users need to replace "alt:up" with "cmd:up")
 def omega_mouse_modifiers_release_function():
     actions.key("ctrl:up")
@@ -38,7 +35,6 @@ def omega_mouse_modifiers_release_function():
     actions.key("alt:up")
     actions.key("super:up")
     #actions.key("cmd:up")
-
 
 
 # ========== CALLABLE FUNCTIONS ==========
@@ -122,7 +118,7 @@ class OmegaMouseActions:
         actions.mouse_click(0)
     
     def omega_mouse_left_modup_click():
-        """Left Click that releases modifier keys afterwards"""
+        """Left Click that releases modifier keys afterwards when Omega Mouse is off"""
         actions.mouse_click(0)
         omega_mouse_modifiers_release_function()
     
@@ -137,7 +133,7 @@ class OmegaMouseActions:
     
     def omega_mouse_wait():
         """Does nothing when Omega Mouse is off"""
-        print(Does nothing when Omega Mouse is off)
+        print("Does nothing when Omega Mouse is off")
     
     def omega_mouse_state_check():
         """Checks state of Omega Mouse"""
@@ -151,14 +147,13 @@ class OmegaMouseActions:
         #print(f" - Right Drag = {1 in list(ctrl.mouse_buttons_down())}")
 
 
-
 # ========== OVERRIDDEN FUNCTIONS ==========
 @ctx_switch.action_class("user")
-class OmegaMouseOverrides:
+class OmegaMouseSwitchOverrides:
 
     # Turns off Omega Mouse states first before setting Control Mouse to default active state.
     # Helps to insure other eye tracking modes work as intended
-    # (with no active remnants from Omega Mouse)
+    # (with no active remnants from Omega Mouse).
     def control_mouse_switch():
         """Turns off Omega Mouse first before switching to Control Mouse."""
         global om_state
@@ -174,7 +169,7 @@ class OmegaMouseOverrides:
     
     # Turns off Omega Mouse and Control Mouse first before setting Zoom Mouse to
     # default active state. Helps to insure other eye tracking modes work as intended
-    # (with no active remnants from Omega Mouse)
+    # (with no active remnants from Omega Mouse).
     def zoom_mouse_switch():
         """Turns off Omega Mouse first before switching to Zoom Mouse."""
         global om_state

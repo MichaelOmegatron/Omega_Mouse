@@ -11,8 +11,8 @@ settings():
 # ----- Omega Mouse Toggle Switching -----
 omega mouse: user.omega_mouse_toggle()
 omega restart: user.omega_mouse_restart()
-#control mouse: {uses Omega Mouse function placed in mouse.talon}
-#zoom mouse: {uses Omega Mouse function placed in mouse.talon}
+#control mouse: {uses Omega Mouse function placed into mouse.talon. See "Set-Up" in readme.}
+#zoom mouse: {uses Omega Mouse function placed into mouse.talon. See "Set-Up" in readme.}
 
 
 

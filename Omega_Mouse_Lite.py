@@ -9,7 +9,6 @@ and tag: user.omega_lite
 """
 
 
-
 # ========== OMEGA MOUSE - LITE MODE COMMANDS ==========
 @ctx_lite.action_class('user')
 class OmegaMouseLiteOverrides:

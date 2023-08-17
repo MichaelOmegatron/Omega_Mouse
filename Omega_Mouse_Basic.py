@@ -8,8 +8,6 @@ tag: user.om_on
 and tag: user.omega_basic
 """
 
-# global variable om_state is imported from Omega_Mouse.py
-
 
 # ========== OMEGA MOUSE - BASIC MODE COMMANDS ==========
 @ctx_basic.action_class('user')
@@ -31,14 +29,14 @@ class OmegaMouseBasicOverrides:
         actions.tracking.control_head_toggle(True)
     
     def omega_mouse_left_modup_click():
-        """Left Click, release modifer keys, then turn of tracking"""
+        """Left Click, release modifer keys, keep head tracking on"""
         actions.mouse_click(0)
         actions.tracking.control_gaze_toggle(False)
         actions.tracking.control_head_toggle(True)
         omega_mouse_modifiers_release_function()
     
     def omega_mouse_double_click():
-        """Double Click then turn off tracking"""
+        """Double Click then keep head tracking on"""
         actions.mouse_click(0)
         actions.mouse_click(0)
         actions.tracking.control_gaze_toggle(False)
