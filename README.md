@@ -48,7 +48,7 @@ zoom mouse:
 *Also Note: Omega Mouse must be switched to-and-from **VERBALLY**. Using the Talon menu with your mouse will bypass the switches in the code, leading to unintended behavior.*
 
 ### For Mac Users:
-I don't have a Mac, so I have not tested this code on a Mac. But I assume it will work all the same. However, you will at least need to replace the "alt" key with "cmd" key in the function "omega_mouse_modifiers_release_function" found in the [Omega_Mouse.py](Omega_Mouse.py) file.
+I don't have a Mac, so I have not tested this code on a Mac. But I assume it will work all the same. However, you will at least need to replace the "alt" key with "cmd" key in the function "omega_mouse_modifiers_release_function" found in the [Omega_Mouse.py](Omega_Mouse.py) file at line 32.
 
 
 ## 3 Mode Summary:
