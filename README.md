@@ -34,7 +34,7 @@ If you are a Talon Voice user, Omega Mouse may be for you if:
 ## Set-Up:
 To use Omega Mouse without unintended cursor warping, use single eye tracking. A "hidden" eye-tracking feature (mentioned in [Control Mouse vs Omega Mouse Disclaimer](#control-mouse-vs-omega-mouse-disclaimer) above) cannot be disabled at the moment. But usually doesn’t work with single eye tracking, making it the most reliable way to “disable” it so Omega Mouse can work as intended.
 
-In order for Omega Mouse to maintain its proper functionality as error free as possible, mouse.talon must be edited in the community repo. The functions in [Eye_Tracking_Switches.py](Eye_Tracking_Switches.py) (*control_mouse_switch( )* & *zoom_mouse_switch( )*) must be placed into mouse.talon for the rules Control Mouse and Zoom Mouse respectively. If you want to keep the original commands intact to revert to them easily later (in case you ever remove Omega Mouse), add a "#" before the commands that are there by default to deactivate them. It should look like this in mouse.py:
+In order for Omega Mouse to maintain its proper functionality as error free as possible, mouse.talon must be edited in the community repo. The functions in [Eye_Tracking_Switches.py](Eye_Tracking_Switches.py) (***control_mouse_switch( )*** & ***zoom_mouse_switch( )***) must be placed into mouse.talon for the rules Control Mouse and Zoom Mouse respectively. If you want to keep the original commands intact to revert to them easily later (in case you ever remove Omega Mouse), add a "#" before the commands that are there by default to deactivate them. It should look like this in mouse.py:
 ```
 control mouse:
 	# tracking.control_toggle()
