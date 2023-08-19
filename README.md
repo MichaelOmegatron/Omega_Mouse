@@ -81,10 +81,14 @@ settings():
 ```
 
 ### 3 Modes Explained:
-**FULL MODE:** Moving the cursor and left clicking are done in a 2-phase process (like Zoom Mouse) with a popping sound. The first pop moves the cursor to your gaze (and enables Head tracking). The second pop left clicks (and disables Head tracking). Actions like clicking or starting a drag will stop the cursor from moving.
+**FULL MODE:** Moving the cursor and left clicking are done in a 2-phase process (like Zoom Mouse) with a popping sound. The first pop moves the cursor to your gaze (and enables Head tracking). The second pop left clicks (and disables Head tracking). If a mouse drag is occuring, the second pop will instead end the drag (including releasing any modifier keys). Actions like clicking or starting a drag will stop the cursor from moving.
 
-This process changes if you are dragging. While dragging with the mouse, popping merely moves the cursor, but does not click. To release dragging, the drop command (drop / drag end / end drag) must be invoked. This was done to simplify undoing a decision to drag by allowing you to simply pop back to where you started from, and then release. Otherwise, you could get caught in the 2-phase process.
-- For example, if you are dragging a file to a new location and decide you don't want to drop it, being stuck in the 2-phase process might force you to move or copy the file to your undesired destination you are hovering over in Phase 2. Being able to pop back and release is simpler than needing to remember yet another command to cancel the 2-Phase process.
+It is possible that while you are in the second phase of the 2-process (i.e. when head tracking is active) you may want to exit the process, or stop the cusor from moving. This can be done with the voice command "wait", which will turn off tracking and reset the 2-phase process. This can be usefull if you don't want to commit to an actual click, such as changing your mind, wanting to hover over a button to read a pop-up.
+
+It is also possible that while you are in the second phase of the 2-phase process, you may need to move the cursor somewhere else prior to clicking. This can be done with the voice command "relo", which will relocate the cursor to your gaze by redoing the Phase-1 pop behavior. This helps make the 2-Phase process a bit less rigid, and can be useful in a few scenarios. For example:
+- If the cursor did not move close enough to your desired location and head tracking isn't enough to compensate.
+- If you change your mind about where you want the cursor to be
+- If you are in the middle of a drag-and-drop process and wanting to move back to the start location without commiting the move.
 
 **LITE MODE:** Moving the cursor and left click are separated into two separate commands. Moving the cursor is done by a pop. Left click is done by saying “yum” or “gum”. Actions like mouse clicking or starting a drag will stop the cursor from moving.
 
@@ -98,7 +102,7 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 
 *Note: By default, Omega Mouse requires you to use “yum” or “gum” for left click (lite/basic modes) and "twill" for double click (all modes). Omega Mouse overrides some community repo functions to work with the community voice commands you might be familiar with. But the community voice commands for left click and double click do not use functions easily overridden. To minimize editing mouse.py in the community repo on the user end, new functions had to be created to maintain Omega Mouse behavior, hence “yum/gum” and “twill”. If you have custom voice commands, they will need to be reconciled with the Omega Mouse functions.*
 
-*Also Note: If you map mouse dragging to a physical switch, the altered popping state in Full mode will still work. But once you release the drag, head tracking (Phase 2) will be active. So you will need to end Phase 2 at that point.*
+*Also Note: If you map mouse dragging to a physical switch, the code will recognize the drag state, but the 2-phase process will not restart like it would with a verbal command. See the "noise_trigger_pop()" function in [Omega_Mouse_Full.py](Omega_Mouse_Full.py) to see the code behavior.*
 
 ### Voice Commands List:
 - **Omega Mouse:** Toggles Omega Mouse on/off. Captures mode value when turning on.
@@ -113,45 +117,46 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 - ***Popping sound*:**
   - Full Mode:
     - Phase 1: Moves cursor.
-    - Phase 2: Left Click. (Freeze cursor.)
-    - While dragging: only moves cursor.
+    - Phase 2: Left Click. (Freezes cursor.)
+    - While dragging: Phase 2 releases all mouse buttons + Modifier keys. (Freezes cursor)
   - Lite Mode:
-    - Moves cursor. (Freeze cursor)
+    - Moves cursor. (Freezes cursor)
   - Basic Mode:
     - Moves cursor
   - Omega Mouse Off:
     - Community default left click
 - **Yum / Gum:**
   - Full Mode:
-    - Left click. (Freeze cursor)
+    - Left click. (Freezes cursor)
+    - (Not really meant for Full Mode, but useful if cursor already over desired target)
   - Lite Mode:
-    - Left click. (Freeze cursor)
+    - Left click. (Freezes cursor)
   - Basic Mode:
     - Left click.
   - Omega Mouse Off:
     - Left Click.
 - **Yummer / Gummer:**
   - Full Mode:
-    - Left click + release modifier keys (Freeze Cursor)
+    - Left click + release modifier keys (Freezes Cursor)
+    - (Not really meant for Full mode, but useful if cursor already over desired target)
   - Lite Mode:
-    - Left click + release modifier keys (Freeze Cursor)
+    - Left click + release modifier keys (Freezes Cursor)
   - Basic Mode:
     - Left click + release modifier keys
   - Omega Mouse Off:
     - Left click + release modifier keys
 - **Twill:**
   - Full Mode:
-    - Double click (Freeze cursor)
+    - Double click (Freezes cursor)
   - Lite Mode:
-    - Double click (Freeze cursor)
+    - Double click (Freezes cursor)
   - Basic Mode:
     - Double click
   - Omega Mouse Off:
     - Double click
-- **Nudge:**
+- **Relo:**
   - Full Mode:
-    - Skips Gaze tracking to immediately use Head tracking for small adjustments.
-    - (Somewhat redundant since popping while looking near cursor does the same thing, if not faster.)
+    - Relocates cursor to gaze during Phase 2 (redoes Phase 1)
   - Lite Mode:
     - Does nothing
   - Basic Mode:
@@ -196,10 +201,10 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
     - Prints state of variables and tags in Talon log viewer (for troubleshooting)
 
 ## Omega Mouse Logic Flow Chart for visual reference
-![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/842e4ca7-2ef9-4857-b06f-3d39e86c140d)
+![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/579b0411-51fc-4f3f-9e4b-3ef83e9d4a04)
 
-![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/7b01cc4a-6683-4830-abab-6c257cb1d4d7)
+![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/c28bdcc0-d9e8-42b4-a2e9-3dca163991c8)
 
-![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/45c5c833-b696-450f-981e-4bb5f9111b63)
+![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/600aa377-01ae-4d51-a84d-16a2179eb7bb)
 
 ![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/f02f1a71-9a9c-4bef-8080-23f4a6a4f77e)
