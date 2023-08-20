@@ -90,6 +90,8 @@ It is also possible that while you are in the second phase of the 2-phase proces
 - If you change your mind about where you want the cursor to be
 - If you are in the middle of a drag-and-drop process and wanting to move back to the start location without commiting the move.
 
+*Note: The voice command "relo" will take longer for Talon Voice to parse than the pop sound. So expect some lag between saying "relo" and the cursor moving to your gaze.*
+
 **LITE MODE:** Moving the cursor and left click are separated into two separate commands. Moving the cursor is done by a pop. Left click is done by saying “yum” or “gum”. Actions like mouse clicking or starting a drag will stop the cursor from moving.
 
 The decision to settle on yum/gum came from observing the position of the tongue pre and post popping sound. The combination of popping and saying “yum” created a natural loop of commands that I found comfortable to run back-to-back. In order to pop, the back of the tongue has to block the passage of the throat to create a “cave” or “vacuum” for the pop sound to produce. After making a popping sound, the mouth remains open, but the tongue is still at the back of the throat. Having a sound that starts from the back of the throat is the most natural next sound to make (which I find “yum” to satisfy), and which most likely will need to be a left click. Likewise, to start another pop sound, the lips need to start together, which the M ending in “yum” provides.
