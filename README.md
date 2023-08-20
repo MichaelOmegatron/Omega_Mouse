@@ -203,10 +203,10 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
     - Prints state of variables and tags in Talon log viewer (for troubleshooting)
 
 ## Omega Mouse Logic Flow Chart for visual reference
-![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/579b0411-51fc-4f3f-9e4b-3ef83e9d4a04)
+![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/dab744e0-cd7a-4234-aa5d-1dc7e548f147)
 
-![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/c28bdcc0-d9e8-42b4-a2e9-3dca163991c8)
+![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/7911845b-2630-4c60-ac0d-dc1f230d7e9e)
 
-![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/600aa377-01ae-4d51-a84d-16a2179eb7bb)
+![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/bc83b232-231e-4410-9c3a-4e01fd7c5529)
 
-![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/f02f1a71-9a9c-4bef-8080-23f4a6a4f77e)
+![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/9c94210e-a054-49e5-9501-24117c8e7838)
