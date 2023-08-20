@@ -127,7 +127,7 @@ class OmegaMouseActions:
         actions.mouse_click(0)
         actions.mouse_click(0)
     
-    def omega_mouse_nudge():
+    def omega_mouse_relocate():
         """Does nothing when Omega Mouse is off"""
         print("Does nothing when Omega Mouse is off")
     

@@ -42,21 +42,34 @@ class OmegaMouseFullOverrides:
                 actions.tracking.control_gaze_toggle(False)
                 actions.tracking.control_head_toggle(False)
                 Omega_Mouse.first_pop_done = False
-        # If drag is active, popping only moves cursor (Phase 1)
+        # If drag is active, Phase 2 pop does "mouse_drag_end" instead of simple left click
         else:
-            actions.tracking.control_head_toggle(False)
-            actions.tracking.control_gaze_toggle(True)
-            actions.sleep("50ms")
-            actions.tracking.control_gaze_toggle(False)
-            actions.sleep("50ms")
-            actions.tracking.control_head_toggle(True)
-            Omega_Mouse.first_pop_done = True
-            # Setting first_pop_done to True is important while drag is active for a very
-            # niche circumstance. If you prefer to hold down a physical button for dragging,
-            # instead of using a voice command, once you let go, head tracking will still
-            # be active. It makes more sense for Phase 2 to be active at this point,
-            # to keep the behavior consistent while head tracking is on.
-
+            if Omega_Mouse.first_pop_done == False:
+                actions.tracking.control_head_toggle(False)
+                actions.tracking.control_gaze_toggle(True)
+                actions.sleep("50ms")
+                actions.tracking.control_gaze_toggle(False)
+                actions.sleep("50ms")
+                actions.tracking.control_head_toggle(True)
+                Omega_Mouse.first_pop_done = True
+            # Second pop does "mouse_drag_end" in ctx_full below
+            elif Omega_Mouse.first_pop_done == True:
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(False)
+                Omega_Mouse.first_pop_done = False
+                # stealing "drag end" code from mouse_drag_end function in mouse.py file
+                buttons_held_down = list(ctrl.mouse_buttons_down())
+                for button in buttons_held_down:
+                    ctrl.mouse_click(button=button, up=True)
+                #--------------------------------------------------
+                actions.sleep("50ms")
+                Omega_Mouse.omega_mouse_modifiers_release_function()
+            # Note: If you have mouse drag mapped to a physical switch, the code will recognize
+            # the drag state, but the first_pop_done variable will not update. For example,
+            # if you pop the cursor over to an item, activate your drag command with a switch,
+            # you will need to use the "relo" command to move the cursor, because the next pop
+            # you make will instead activate the "mouse_drag_end" command.
+            
     def omega_mouse_left_click():
         """Left Click then turn off tracking if needed.
         Alternate way to end Phase 2, or to click immediately without 2-phase popping"""
@@ -93,19 +106,18 @@ class OmegaMouseFullOverrides:
             actions.tracking.control_head_toggle(False)
             Omega_Mouse.first_pop_done = False
     
-    def omega_mouse_nudge():
-        """Skips eye tracking in phase 1. Used to move cursor small distances."""
-        # If drag inactive, check first_pop_done
-        if len(ctrl.mouse_buttons_down()) == 0:
-            if Omega_Mouse.first_pop_done == False:
-                actions.tracking.control_gaze_toggle(False)
-                actions.tracking.control_head_toggle(True)
-                Omega_Mouse.first_pop_done = True
-            elif Omega_Mouse.first_pop_done == True:
-                pass
-        # If drag is active, do nothing.
-        else:
+    def omega_mouse_relocate():
+        """Moves cursor if first pop was already activated in 2-phase process"""
+        if Omega_Mouse.first_pop_done == False:
             pass
+        elif Omega_Mouse.first_pop_done == True:
+            actions.tracking.control_head_toggle(False)
+            actions.tracking.control_gaze_toggle(True)
+            actions.sleep("50ms")
+            actions.tracking.control_gaze_toggle(False)
+            actions.sleep("50ms")
+            actions.tracking.control_head_toggle(True)
+            Omega_Mouse.first_pop_done = True
     
     def omega_mouse_wait():
         """Stops moving cursor. Does not release dragging"""

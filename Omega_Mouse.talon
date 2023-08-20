@@ -21,7 +21,7 @@ omega restart: user.omega_mouse_restart()
 (yum | gum): user.omega_mouse_left_click()
 (yummer | gummer): user.omega_mouse_left_modup_click()
 twill: user.omega_mouse_double_click()
-nudge: user.omega_mouse_nudge()
+relo: user.omega_mouse_relocate()
 #drag: {overrides default mouse_drag in mouse.py for Omega Mouse functionality}
 drop: user.mouse_drag_end()
 #(drag end | end drag | drop): {overrides default mouse_drag_end in mouse.py for Omega Mouse functionality}

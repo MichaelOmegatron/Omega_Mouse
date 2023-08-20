@@ -42,11 +42,10 @@ class OmegaMouseBasicOverrides:
         actions.tracking.control_gaze_toggle(False)
         actions.tracking.control_head_toggle(True)
         
-    def omega_mouse_nudge():
+    def omega_mouse_relocate():
         """Does nothing in Basic Mode"""
-        print("Does nothing in Basic Mode. 'Nudge' is sort of always on already.")
-        
-    
+        print("Does nothing in Basic Mode.")
+            
     def omega_mouse_wait():
         """Stops moving the cursor. Does not release dragging."""
         actions.tracking.control_gaze_toggle(False)

@@ -42,9 +42,9 @@ class OmegaMouseLiteOverrides:
         actions.tracking.control_gaze_toggle(False)
         actions.tracking.control_head_toggle(False)
     
-    def omega_mouse_nudge():
+    def omega_mouse_relocate():
         """Does nothing in Lite Mode"""
-        print("Does nothing in Lite Mode. Easy enough to simply pop to restart mouse movement.")
+        print("Does nothing in Lite Mode.")
     
     def omega_mouse_wait():
         """Stops moving the cursor. Does not release dragging."""
