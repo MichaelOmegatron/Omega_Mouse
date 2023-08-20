@@ -86,9 +86,9 @@ settings():
 It is possible that while you are in the second phase of the 2-phase process (i.e. when head tracking is active) you may want to exit the process, or stop the cusor from moving. This can be done with the voice command "wait", which will turn off tracking and reset the 2-phase process. This can be usefull if you don't want to commit to an actual click, such as changing your mind, or wanting to hover over a button to read a pop-up.
 
 It is also possible that while you are in the second phase of the 2-phase process, you may need to move the cursor somewhere else prior to clicking. This can be done with the voice command "relo", which will relocate the cursor to your gaze by redoing the Phase-1 pop behavior. This helps make the 2-Phase process a bit less rigid, and can be useful in a few scenarios. For example:
-- If the cursor did not move close enough to your desired location and head tracking isn't enough to compensate.
+- If the cursor did not move close enough to your desired location initially and head tracking isn't enough to compensate.
 - If you change your mind about where you want the cursor to be
-- If you are in the middle of a drag-and-drop process and wanting to move back to the start location without commiting the move.
+- If you are in the middle of a drag-and-drop process and want to move back to the start location without commiting the move.
 
 *Note: The voice command "relo" will take longer for Talon Voice to parse than the pop sound. So expect some lag between saying "relo" and the cursor moving to your gaze.*
 
