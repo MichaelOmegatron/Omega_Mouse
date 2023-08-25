@@ -209,6 +209,6 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 
 ![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/7911845b-2630-4c60-ac0d-dc1f230d7e9e)
 
-![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/bc83b232-231e-4410-9c3a-4e01fd7c5529)
+![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/8cf4b6dd-bc50-4118-bff2-4b4aaa4cb91b)
 
 ![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/9c94210e-a054-49e5-9501-24117c8e7838)
