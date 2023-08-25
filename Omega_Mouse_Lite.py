@@ -62,7 +62,7 @@ class OmegaMouseLiteOverrides:
         #-----------------------------------------
         actions.tracking.control_gaze_toggle(False)
         actions.sleep("50ms")
-        actions.tracking.control_head_toggle(True)
+        actions.tracking.control_head_toggle(False)
     
     # Changes default mouse_drag_end behavior while Omega Mouse is active to appropriate
     # behavior. Releases mouse buttons and modifier keys.
