@@ -55,6 +55,14 @@ zoom mouse:
 ### For Mac Users:
 I don't have a Mac, so I have not tested this code on a Mac. But I assume it will work all the same. However, you will at least need to replace the "alt" key with "cmd" key in the function "omega_mouse_modifiers_release_function" found in the [Omega_Mouse.py](Omega_Mouse.py) file at line 32.
 
+## Omega_Mouse.talon file syntax Explained
+With all of the #'s in this file, it can maybe look a bit confusing, but it is important that these #'s stay where they are. This allows every voice command Omega Mouse uses to be listed in this one file.
+- Lines 1, 11, 19 are simply headers to help organize the file visually
+- Lines 3-6 provides a description and options fort the setting on line 7
+
+The #'s mixed in with the voice commands can look a bit messy.
+- Voice commands without a # are commands actually defined in the file
+- Voice commands with the # are commands not defined in this file, but in another talon file somewhere, like the community repo. Omega_Mouse will override the community repo behavior when these voice commands are spoken inside it's python code.
 
 ## 3 Mode Summary:
 There are three “modes” in Omega Mouse (3 different contexts) that behave slightly differently: Full, Lite, and Basic. But they all follow the same idea: The cursor does not follow your eye gaze, but will warp to your eye gaze when popping, with fine-tuned movement reserved for Head tracking. FULL mode uses popping to both move the cursor and left click in a 2-phase process (like zoom mouse). LITE uses popping to warp the cursor to your gaze, but requires a separate command to click. BASIC is the same as LITE, except instead of Head tracking turning off to keep the cursor still when not in use, Head tracking remains on all the time. I found these three modes can each serve a purpose, but one may be good enough for you.
