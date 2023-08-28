@@ -9,9 +9,9 @@ Omega Mouse is an alternative way to interact with Control Mouse in Talon Voice.
 There are three "modes" or behaviors that act a little differently, but generally they follow the same idea: the cursor only moves to your gaze when you *pop*, and then uses head tracking to fine tune your movement. This prevents unintended inputs from blinking or eye movements influencing the cursor. The original intention of this project is realized in "Full mode", which is basically a blend between Control Mouse and Zoom Mouse.
 
 ## YouTube Videos:
-[![Omega Mouse for Talon Voice - Entire Overview](https://img.youtube.com/vi/lqqNrb_iNwE/hqdefault.jpg)](https://www.youtube.com/watch?v=lqqNrb_iNwE)
-
-[![Omega Mouse for Talon Voice - Setup](https://img.youtube.com/vi/RveUpCPRUHs/hqdefault.jpg)](https://www.youtube.com/watch?v=RveUpCPRUHs)
+Omega Mouse - Entire Overview (37:19) | Omega Mouse - Setup (5:52)
+:-: | :-:
+[![Omega Mouse for Talon Voice - Entire Overview](https://img.youtube.com/vi/lqqNrb_iNwE/hqdefault.jpg)](https://www.youtube.com/watch?v=lqqNrb_iNwE) | [![Omega Mouse for Talon Voice - Setup](https://img.youtube.com/vi/RveUpCPRUHs/hqdefault.jpg)](https://www.youtube.com/watch?v=RveUpCPRUHs)
 
 ## Design Purpose:
 The purpose was to get away from Control Mouse having the Gaze Tracking on all the time, as a few factors made this feature uncomfortable for me. First, I found the cursor constantly following my Gaze to be difficult on my eyes. Second, I have keratoconus in one eye, meaning I have to use single-eye tracking, which introduces more jitter to the cursor. And third, I found blinking to heavily displace the cursor by shooting it to the bottom of the screen. This later issue did not seem to be prevented by Control Mouse’s internal Gaze-pausing function consistently enough, which led to unsustainable eye strain. These issues could very well be personal biological issues I have with my eyes, or my setup at home. And though something like toggling the eye tracking with a shortcut could help with my first issue, I found these discomforts problematic enough to try and code my own preferred method of solving these obstacles.
