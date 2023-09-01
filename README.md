@@ -11,15 +11,15 @@ There are three "modes" or behaviors that act a little differently, but generall
 ## YouTube Videos:
 Omega Mouse - Entire Overview (37:19) | Omega Mouse - Setup (5:52)
 :-: | :-:
-[![Omega Mouse for Talon Voice - Entire Overview](https://img.youtube.com/vi/lqqNrb_iNwE/hqdefault.jpg)](https://www.youtube.com/watch?v=lqqNrb_iNwE) | [![Omega Mouse for Talon Voice - Setup](https://img.youtube.com/vi/RveUpCPRUHs/hqdefault.jpg)](https://www.youtube.com/watch?v=RveUpCPRUHs)
+[![Omega Mouse for Talon Voice - Entire Overview](https://img.youtube.com/vi/lqqNrb_iNwE/hqdefault.jpg)](https://www.youtube.com/watch?v=lqqNrb_iNwE&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=5) | [![Omega Mouse for Talon Voice - Setup](https://img.youtube.com/vi/RveUpCPRUHs/hqdefault.jpg)](https://www.youtube.com/watch?v=RveUpCPRUHs&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=2)
 
 Omega Mouse - Talon File Explained (7:40) | Omega Mouse - Full Mode Spotlight (12:15)
 :-: | :-:
-[![Omega Mouse for Talon Voice - Talon File Explained](https://img.youtube.com/vi/nyFWQ-anQSY/hqdefault.jpg)](https://www.youtube.com/watch?v=nyFWQ-anQSY) | [![Omega Mouse for Talon Voice - Full Mode Spotlight](https://img.youtube.com/vi/9pEe0V3MEUE/hqdefault.jpg)](https://www.youtube.com/watch?v=9pEe0V3MEUE)
+[![Omega Mouse for Talon Voice - Talon File Explained](https://img.youtube.com/vi/nyFWQ-anQSY/hqdefault.jpg)](https://www.youtube.com/watch?v=nyFWQ-anQSY&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=3) | [![Omega Mouse for Talon Voice - Full Mode Spotlight](https://img.youtube.com/vi/9pEe0V3MEUE/hqdefault.jpg)](https://www.youtube.com/watch?v=9pEe0V3MEUE&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=4)
 
 Omega Mouse - Lite Mode Spotlight (5:44) | Omega Mouse - Basic Mode Spotlight (7:41)
 :-: | :-:
-[![Omega Mouse for Talon Voice - Lite Mode Spotlight](https://img.youtube.com/vi/Jt_ecTYd_BI/hqdefault.jpg)](https://www.youtube.com/watch?v=Jt_ecTYd_BI) | [![Omega Mouse for Talon Voice - Basic Mode Spotlight](https://img.youtube.com/vi/ntZiJ_JWY-k/hqdefault.jpg)](https://www.youtube.com/watch?v=ntZiJ_JWY-k)
+[![Omega Mouse for Talon Voice - Lite Mode Spotlight](https://img.youtube.com/vi/Jt_ecTYd_BI/hqdefault.jpg)](https://www.youtube.com/watch?v=Jt_ecTYd_BI&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=5) | [![Omega Mouse for Talon Voice - Basic Mode Spotlight](https://img.youtube.com/vi/ntZiJ_JWY-k/hqdefault.jpg)](https://www.youtube.com/watch?v=ntZiJ_JWY-k&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=6)
 
 ## Design Purpose:
 The purpose was to get away from Control Mouse having the Gaze Tracking on all the time, as a few factors made this feature uncomfortable for me. First, I found the cursor constantly following my Gaze to be difficult on my eyes. Second, I have keratoconus in one eye, meaning I have to use single-eye tracking, which introduces more jitter to the cursor. And third, I found blinking to heavily displace the cursor by shooting it to the bottom of the screen. This later issue did not seem to be prevented by Control Mouse’s internal Gaze-pausing function consistently enough, which led to unsustainable eye strain. These issues could very well be personal biological issues I have with my eyes, or my setup at home. And though something like toggling the eye tracking with a shortcut could help with my first issue, I found these discomforts problematic enough to try and code my own preferred method of solving these obstacles.
