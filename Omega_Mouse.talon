@@ -6,13 +6,13 @@ settings():
 	# 0 = Full
 	# 1 = Lite
 	# 2 = Basic
-	user.omega_mouse_mode = 1
+	user.omega_mouse_mode = 0
 		
 # ----- Omega Mouse Cursor Time Intervals -----
 # Applies to all modes. No restart required with change, only save.
 # Total between both settings should be under 1800ms. Must use quotes in value.
 settings():
-	# GAZE CAPTURE INTERVAL: Sets amount of time gaze is captureds for cursor movement.
+	# GAZE CAPTURE INTERVAL: Sets amount of time gaze is captured for cursor movement.
 	# Default = "50ms"
 	user.gaze_capture_interval = "50ms"
 	
