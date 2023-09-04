@@ -26,6 +26,19 @@ setting_omega_mouse_mode = mod.setting(
     desc="Determines which mode of Omega Mouse to use. 0 = Full. 1 = Lite. 2 = Basic"
     )
 
+setting_gaze_capture_interval = mod.setting(
+    "gaze_capture_interval",
+    type=str,
+    default="50ms",
+    desc="Sets gaze time window for cursor movement after 'popping noise'/'relo' commands"
+    )
+
+setting_head_track_lag = mod.setting(
+    "head_track_lag",
+    type=str,
+    default="50ms",
+    desc="Sets interval after gaze tracking before head tracking starts"
+    )
 
 # ========== NON-CALLABLE FUNCTIONS ==========
 # Releases all modifier keys (Mac users need to replace "alt:up" with "cmd:up")
@@ -137,9 +150,13 @@ class OmegaMouseActions:
     
     def omega_mouse_state_check():
         """Checks state of Omega Mouse"""
+        gaze_window = setting_gaze_capture_interval.get()
+        head_lag = setting_head_track_lag.get()
         print("Omega Mouse states listed below...")
         print("om_state =", om_state)
         print("tags =", list(ctx.tags))
+        print(f"gaze window interval = {gaze_window}")
+        print(f"head track lag = {head_lag}")
         print("first_pop_done =", first_pop_done)
         print(f"Drag State = {len(ctrl.mouse_buttons_down()) != 0}")
         #print(f" - Left Drag = {0 in list(ctrl.mouse_buttons_down())}")

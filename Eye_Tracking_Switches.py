@@ -14,7 +14,3 @@ class EyeTrackSwitches:
         """Toggles Zoom Mouse on/off"""
         actions.tracking.control_zoom_toggle()
         print("Zoom Mouse toggled")
-
-# When I write my ReadMe file, mention that I was advised not to override the tracking
-# actions with Contexts due to potential stability issues. This means I had to write new
-# methods that need to be placed in the .talon file mouse.py.

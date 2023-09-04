@@ -25,15 +25,17 @@ class OmegaMouseFullOverrides:
     def noise_trigger_pop():
         """If no drag, first pop toggles head tracking, second pop confirms click.
         If drag, popping only moves the cursor to gaze."""
+        gaze_window = Omega_Mouse.setting_gaze_capture_interval.get()
+        head_lag = Omega_Mouse.setting_head_track_lag.get()
         # If drag inactive, popping does 2-phase clicking
         if len(ctrl.mouse_buttons_down()) == 0:
             # Phase 1: Move cursor with gaze then switch to head tracking
             if Omega_Mouse.first_pop_done == False:
                 actions.tracking.control_head_toggle(False)
                 actions.tracking.control_gaze_toggle(True)
-                actions.sleep("50ms")
+                actions.sleep(gaze_window)
                 actions.tracking.control_gaze_toggle(False)
-                actions.sleep("50ms")
+                actions.sleep(head_lag)
                 actions.tracking.control_head_toggle(True)
                 Omega_Mouse.first_pop_done = True
             # Phase 2: Left click and disable head tracking
@@ -47,9 +49,9 @@ class OmegaMouseFullOverrides:
             if Omega_Mouse.first_pop_done == False:
                 actions.tracking.control_head_toggle(False)
                 actions.tracking.control_gaze_toggle(True)
-                actions.sleep("50ms")
+                actions.sleep(gaze_window)
                 actions.tracking.control_gaze_toggle(False)
-                actions.sleep("50ms")
+                actions.sleep(head_lag)
                 actions.tracking.control_head_toggle(True)
                 Omega_Mouse.first_pop_done = True
             # Second pop does "mouse_drag_end" in ctx_full below
@@ -108,14 +110,16 @@ class OmegaMouseFullOverrides:
     
     def omega_mouse_relocate():
         """Moves cursor if first pop was already activated in 2-phase process"""
+        gaze_window = Omega_Mouse.setting_gaze_capture_interval.get()
+        head_lag = Omega_Mouse.setting_head_track_lag.get()
         if Omega_Mouse.first_pop_done == False:
             pass
         elif Omega_Mouse.first_pop_done == True:
             actions.tracking.control_head_toggle(False)
             actions.tracking.control_gaze_toggle(True)
-            actions.sleep("50ms")
+            actions.sleep(gaze_window)
             actions.tracking.control_gaze_toggle(False)
-            actions.sleep("50ms")
+            actions.sleep(head_lag)
             actions.tracking.control_head_toggle(True)
             Omega_Mouse.first_pop_done = True
     

@@ -1,5 +1,5 @@
 from talon import Context, actions, ctrl, noise
-from .Omega_Mouse import omega_mouse_modifiers_release_function
+from .Omega_Mouse import omega_mouse_modifiers_release_function, setting_gaze_capture_interval, setting_head_track_lag
 
 
 ctx_lite = Context()
@@ -15,11 +15,13 @@ class OmegaMouseLiteOverrides:
 
     def noise_trigger_pop():
         """Move cursor to gaze then switch to head tracking."""
+        gaze_window = setting_gaze_capture_interval.get()
+        head_lag = setting_head_track_lag.get()
         actions.tracking.control_head_toggle(False)
         actions.tracking.control_gaze_toggle(True)
-        actions.sleep("50ms")
+        actions.sleep(gaze_window)
         actions.tracking.control_gaze_toggle(False)
-        actions.sleep("50ms")
+        actions.sleep(head_lag)
         actions.tracking.control_head_toggle(True)
         
     def omega_mouse_left_click():
@@ -61,7 +63,6 @@ class OmegaMouseLiteOverrides:
         ctrl.mouse_click(button=button, down=True)
         #-----------------------------------------
         actions.tracking.control_gaze_toggle(False)
-        actions.sleep("50ms")
         actions.tracking.control_head_toggle(False)
     
     # Changes default mouse_drag_end behavior while Omega Mouse is active to appropriate
