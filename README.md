@@ -63,7 +63,7 @@ zoom mouse:
 *Also Note: Omega Mouse must be switched to-and-from **VERBALLY**. Using the Talon menu with your mouse will bypass the switches in the code, leading to unintended behavior.*
 
 ### For Mac Users:
-I don't have a Mac, so I have not tested this code on a Mac. But I assume it will work all the same. However, you will at least need to replace the "alt" key with "cmd" key in the function "omega_mouse_modifiers_release_function" found in the [Omega_Mouse.py](Omega_Mouse.py) file at line 32.
+I don't have a Mac, so I have not tested this code on a Mac. But I assume it will work all the same. However, you will at least need to replace the "alt" key with "cmd" key in the function "omega_mouse_modifiers_release_function" found in the [Omega_Mouse.py](Omega_Mouse.py) file at line 45.
 
 ## 3 Mode Summary:
 There are three “modes” in Omega Mouse (3 different contexts) that behave slightly differently: Full, Lite, and Basic. But they all follow the same idea: The cursor does not follow your eye gaze, but will warp to your eye gaze when popping, with fine-tuned movement reserved for Head tracking. FULL mode uses popping to both move the cursor and left click in a 2-phase process (like zoom mouse). LITE uses popping to warp the cursor to your gaze, but requires a separate command to click. BASIC is the same as LITE, except instead of Head tracking turning off to keep the cursor still when not in use, Head tracking remains on all the time. I found these three modes can each serve a purpose, but one may be good enough for you.
