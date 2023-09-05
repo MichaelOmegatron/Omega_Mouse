@@ -67,12 +67,61 @@ I don't have a Mac, so I have not tested this code on a Mac. But I assume it wil
 
 ## Omega_Mouse.talon file syntax Explained
 With all of the #'s in this file, it can maybe look a bit confusing, but it is important that these #'s stay where they are. This allows every voice command Omega Mouse uses to be listed in this one file.
-- Lines 1, 11, 19 are simply headers to help organize the file visually
-- Lines 3-6 provides a description and options fort the setting on line 7
+- Lines 1, 3, 11, 25, 27, 33 are simply headers to help organize the file visually
+- Lines 5-8 provide a description and options for the setting on line 9
+- Lines 12-13, 15-16, 20-21 provide descriptions for the settings on lines 17 and 21
 
-The #'s mixed in with the voice commands can look a bit messy.
-- Voice commands without a # are commands actually defined in the file
-- Voice commands with the # are commands not defined in this file, but in another talon file somewhere, like the community repo. Omega_Mouse will override the community repo behavior when these voice commands are spoken inside it's python code.
+The #'s mixed in with the voice commands can look a bit messy (in lines 28-31 & 34-43)
+- Voice commands without a '#' are commands actually defined in the file
+- Voice commands with a '#' are commands not defined in this file, but in another talon file somewhere, like the community repo. Omega_Mouse will override the community repo behavior when these voice commands are spoken inside it's python code.
+
+### Changing modes:
+To choose which mode to use: Open the [Omega_Mouse.talon](Omega_Mouse.talon) file -> change the “user.omega_mouse_mode” setting number to 0 (Full mode), 1 (Lite mode), or 2 (basic mode) -> save the file -> If Omega Mouse was active when you made these changes, you must restart Omega Mouse to pick up the change.
+```
+# ----- Omega Mouse Mode Selection -----
+settings():
+	# Set which Omega Mouse mode to use. Omega Mouse restart required with change.
+	# 0 = Full
+	# 1 = Lite
+	# 2 = Basic
+	user.omega_mouse_mode = 0
+```
+
+### Setting Cursor Time Intervals:
+The settings *Gaze Capture Interval* and *Head Tracking Delay* allow you to tweak the response of Omega Mouse when moving the cursor. This can be helpful if you find the default capture or response times too fast or slow for you. We're dealing with milliseconds here, so these are not very impactful settings. (But this will hopefully make Omega Mouse more inclusive to individuals who may blink frequently due to some conditions or dry eyes.)
+
+*Gaze Capture Interval* (line 17):
+- This will let you set the window of time Gaze tracking is active to capture your gaze point before turning off.
+- The default value is "50ms"
+- A higher value will introduce more cursor movement before settling.
+- A lower value may introduce failures to capture your gaze point.
+
+*Head Tracking Delay* (line 21):
+- This will let you set the amount of time between Gaze tracking turning off and Head tracking turning on.
+- The default value is "50ms"
+- A higher value will introduce more "dead" time before Head tracking starts.
+- A lower value is not very noticeable.
+
+To change these values: Open the [Omega_Mouse.talon](Omega_Mouse.talon) file -> change the “user.gaze_capture_interval” setting and/or "the user.head_track_lag" setting to the desired values -> save the file.
+- Values must include the quotes.
+- Values will work across all Omega Mouse modes.
+- Values should not exceed a combined value of 1800ms.
+	- This is because Talon Voice uses a 2 sec watchdog, and these two setting values are in code that run back-to-back. This is effectively a total time where Talon Voice is non-responsive.
+	- Even values close to 2000ms will set off Talon Voice's warning. 1800ms is therefore a good buffer.
+	- Honestly, I don't expect anyone to need to use a combined value of 1800ms, so this is more informational.
+```
+# ----- Omega Mouse Cursor Time Intervals -----
+# Applies to all modes. No restart required with change, only save.
+# Total between both settings should be under 1800ms. Must use quotes in value.
+settings():
+	# GAZE CAPTURE INTERVAL: Sets amount of time gaze is captured for cursor movement.
+	# Default = "50ms"
+	user.gaze_capture_interval = "50ms"
+	
+	# HEAD TRACKING DELAY: Sets interval after gaze tracking before head tracking starts.
+	# Default = "50ms"
+	user.head_track_lag = "50ms"
+```
 
 ## 3 Mode Summary:
 There are three “modes” in Omega Mouse (3 different contexts) that behave slightly differently: Full, Lite, and Basic. But they all follow the same idea: The cursor does not follow your eye gaze, but will warp to your eye gaze when popping, with fine-tuned movement reserved for Head tracking. FULL mode uses popping to both move the cursor and left click in a 2-phase process (like zoom mouse). LITE uses popping to warp the cursor to your gaze, but requires a separate command to click. BASIC is the same as LITE, except instead of Head tracking turning off to keep the cursor still when not in use, Head tracking remains on all the time. I found these three modes can each serve a purpose, but one may be good enough for you.
@@ -90,18 +139,6 @@ BASIC MODE
 -	Less convenient due to two commands for move-and-click
 
 The decision to make popping the primary cursor movement command across all three modes (instead of the primary clicking command typical in Talon Voice) came from noticing that moving the mouse needs to be an immediate response to feel satisfying. Clicking is easier to have patience for, since you’re hovering over your target already while you wait for Talon to parse your voice command.
-
-### Changing modes:
-To choose which mode to use: Open the [Omega_Mouse.talon](Omega_Mouse.talon) file -> change the “user.omega_mouse_mode” setting number to 0 (Full mode), 1 (Lite mode), or 2 (basic mode) -> save the file -> If Omega Mouse was active when you made these changes, you must restart Omega Mouse to pick up the change.
-```
-# ----- Omega Mouse Mode Selection -----
-settings():
-	# Set which Omega Mouse mode to use. Omega Mouse restart required with change.
-	# 0 = Full
-	# 1 = Lite
-	# 2 = Basic
-	user.omega_mouse_mode = 0
-```
 
 ### 3 Modes Explained:
 **FULL MODE:** Moving the cursor and left clicking are done in a 2-phase process (like Zoom Mouse) with a popping sound. The first pop moves the cursor to your gaze (and enables Head tracking). The second pop left clicks (and disables Head tracking). If a mouse drag is occuring, the second pop will instead end the drag (including releasing any modifier keys). Actions like clicking or starting a drag will stop the cursor from moving.
