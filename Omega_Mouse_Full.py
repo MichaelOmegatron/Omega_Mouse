@@ -73,15 +73,29 @@ class OmegaMouseFullOverrides:
             # you make will instead activate the "mouse_drag_end" command.
             
     def omega_mouse_left_click():
-        """Left Click then turn off tracking if needed.
+        """Left Click then turn off tracking if needed. If drag held, drop instead.
         Alternate way to end Phase 2, or to click immediately without 2-phase popping"""
-        if Omega_Mouse.first_pop_done == False:
-            actions.mouse_click(0)
-        elif Omega_Mouse.first_pop_done == True:
-            actions.mouse_click(0)
+        # If drag is inactive, check first_pop_done for left click behavior.
+        if len(ctrl.mouse_buttons_down()) == 0:
+            if Omega_Mouse.first_pop_done == False:
+                actions.mouse_click(0)
+            elif Omega_Mouse.first_pop_done == True:
+                actions.mouse_click(0)
+                actions.tracking.control_gaze_toggle(False)
+                actions.tracking.control_head_toggle(False)
+                Omega_Mouse.first_pop_done = False
+        # If drag is active, do mouse_drag_end instead
+        else:
             actions.tracking.control_gaze_toggle(False)
             actions.tracking.control_head_toggle(False)
             Omega_Mouse.first_pop_done = False
+            # stealing "drag end" code from mouse_drag_end function in mouse.py file
+            buttons_held_down = list(ctrl.mouse_buttons_down())
+            for button in buttons_held_down:
+                ctrl.mouse_click(button=button, up=True)
+            #--------------------------------------------------
+            actions.sleep("50ms")
+            Omega_Mouse.omega_mouse_modifiers_release_function()
     
     def omega_mouse_left_modup_click():
         """Left Click, release modifer keys, then turn of tracking if needed.

@@ -25,10 +25,23 @@ class OmegaMouseBasicOverrides:
         actions.tracking.control_head_toggle(True)
         
     def omega_mouse_left_click():
-        """Left Click then turn off tracking"""
-        actions.mouse_click(0)
-        actions.tracking.control_gaze_toggle(False)
-        actions.tracking.control_head_toggle(True)
+        """Left Click and keep head tracking on. If drag active, drop instead."""
+        # If drag is inactive, do left click behavior
+        if len(ctrl.mouse_buttons_down()) == 0:
+            actions.mouse_click(0)
+            actions.tracking.control_gaze_toggle(False)
+            actions.tracking.control_head_toggle(True)
+        # If drag is active, do mouse_drag_end instead
+        else:
+            actions.tracking.control_gaze_toggle(False)
+            actions.tracking.control_head_toggle(True)
+            # stealing "drag end" code from mouse_drag_end function in mouse.py file
+            buttons_held_down = list(ctrl.mouse_buttons_down())
+            for button in buttons_held_down:
+                ctrl.mouse_click(button=button, up=True)
+            #--------------------------------------------------
+            actions.sleep("50ms")
+            omega_mouse_modifiers_release_function()
     
     def omega_mouse_left_modup_click():
         """Left Click, release modifer keys, keep head tracking on"""
