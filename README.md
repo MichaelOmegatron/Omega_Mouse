@@ -194,11 +194,14 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 - **Yum / Gum:**
   - Full Mode:
     - Left click. (Freezes cursor)
+    - While dragging: Releases Mouse buttons + Modifier Keys. (Freezes cursor)
     - (Not really meant for Full Mode, but useful if cursor already over desired target)
   - Lite Mode:
     - Left click. (Freezes cursor)
+    - While dragging: Releases Mouse buttons + Modifier Keys. (Freezes cursor)
   - Basic Mode:
     - Left click.
+    - While dragging: Releases Mouse buttons + Modifier Keys.
   - Omega Mouse Off:
     - Left Click.
 - **Yummer / Gummer:**
@@ -269,8 +272,10 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
 ## Omega Mouse Logic Flow Chart for visual reference
 ![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/dab744e0-cd7a-4234-aa5d-1dc7e548f147)
 
-![OmegaMouse_Full_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/7911845b-2630-4c60-ac0d-dc1f230d7e9e)
+![OmegaMouse_Full_logic_chart_p1](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/c857c9c5-bb15-466f-be8d-0807ef23930b)
 
-![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/8cf4b6dd-bc50-4118-bff2-4b4aaa4cb91b)
+![OmegaMouse_Full_logic_chart_p2](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/402e8863-007c-4e0a-8cba-1718658a6087)
 
-![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/9c94210e-a054-49e5-9501-24117c8e7838)
+![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/b54d6e6c-c425-47f5-9e45-c62eb7510eb5)
+
+![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/fbfb6914-4d3b-41cc-9099-8154c3f43ddd)
