@@ -9,6 +9,7 @@ Omega Mouse is an alternative way to interact with Control Mouse in Talon Voice.
 There are three "modes" or behaviors that act a little differently, but generally they follow the same idea: the cursor only moves to your gaze when you *pop*, and then uses head tracking to fine tune your movement. This prevents unintended inputs from blinking or eye movements influencing the cursor. The original intention of this project is realized in "Full mode", which is basically a blend between Control Mouse and Zoom Mouse.
 
 ## YouTube Videos:
+As I update Omega Mouse, these videos will inevitably become slightly out-of-date. So the current state of the project may look a little different from the videos. You can look at the video descriptions on YouTube to see what has changed since the video was uploaded (which I will do my best to update). Discrepancies will mainly include new features, but they might also displace code from the line numbers I specify in the videos. Hopefully discrepencies won't be too drastic and easy to figure out.
 Omega Mouse - Entire Overview (37:19) | Omega Mouse - Setup (5:52)
 :-: | :-:
 [![Omega Mouse for Talon Voice - Entire Overview](https://img.youtube.com/vi/lqqNrb_iNwE/hqdefault.jpg)](https://www.youtube.com/watch?v=lqqNrb_iNwE&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=5) | [![Omega Mouse for Talon Voice - Setup](https://img.youtube.com/vi/RveUpCPRUHs/hqdefault.jpg)](https://www.youtube.com/watch?v=RveUpCPRUHs&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=2)
@@ -164,7 +165,7 @@ To change these values: Open the [Omega_Mouse.talon](Omega_Mouse.talon) file -> 
 *Remember, Talon Voice will be non-responsive for the duration of these setting values.*
 
 ## Omega Mouse Commands:
-There are 13 commands associated with Omega Mouse, whose behavior changes based on the mode they are in. Images of command logic flow charts are provided at the bottom for a (messy) visual reference.
+There are 16 commands associated with Omega Mouse, whose behavior changes based on the mode they are in. Images of command logic flow charts are provided at the bottom for a (messy) visual reference.
 
 *Note: By default, Omega Mouse requires you to use “yum” or “gum” for left click (lite/basic modes) and "twill" for double click (all modes). Omega Mouse overrides some community repo functions to work with the community voice commands you might be familiar with. But the community voice commands for left click and double click do not use functions easily overridden. To minimize editing mouse.py in the community repo on the user end, new functions had to be created to maintain Omega Mouse behavior, hence “yum/gum” and “twill”. If you have custom voice commands, they will need to be reconciled with the Omega Mouse functions. The community repo voice commands "Touch" (left click) and "Duke" or "Dub Click" (double click) will not trigger appropriate Omega Mouse behavior; you need to use "yum/gum" and "twill", or you need to edit in a way for those default voice commands to work.*
 
@@ -223,6 +224,33 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
     - Double click
   - Omega Mouse Off:
     - Double click
+- **Trio:**
+  - Full Mode:
+    - Triple click (Freeze cursor)
+  - Lite Mode:
+    - Triple click (Freeze cursor)
+  - Basic Mode:
+    - Triple click
+  - Omega Mouse Off:
+    - Triple click
+- **Con:**
+  - Full Mode:
+    - Control click (Freeze cursor)
+  - Lite Mode:
+    - Control click (Freeze cursor)
+  - Basic Mode:
+    - Control click
+  - Omega Mouse Off:
+    - Control click
+- **Shill:**
+  - Full Mode:
+    - Shift click (Freeze cursor)
+  - Lite Mode:
+    - Shift click (Freeze cursor)
+  - Basic Mode:
+    - Shift click
+  - Omega Mouse Off:
+    - Shift click
 - **Relo:**
   - Full Mode:
     - Relocates cursor to gaze during Phase 2 (redoes Phase 1)
@@ -270,12 +298,12 @@ There are 13 commands associated with Omega Mouse, whose behavior changes based 
     - Prints state of variables and tags in Talon log viewer (for troubleshooting)
 
 ## Omega Mouse Logic Flow Chart for visual reference
-![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/dab744e0-cd7a-4234-aa5d-1dc7e548f147)
+![OmegaMouse_Default_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/4ba132b2-0aa0-46c2-b993-23d44b2c334f)
 
-![OmegaMouse_Full_logic_chart_p1](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/c857c9c5-bb15-466f-be8d-0807ef23930b)
+![OmegaMouse_Full_logic_chart_p1](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/30b2db13-f153-4745-9949-2be4f9f2e59a)
 
-![OmegaMouse_Full_logic_chart_p2](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/402e8863-007c-4e0a-8cba-1718658a6087)
+![OmegaMouse_Full_logic_chart_p2](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/af8c679a-45f4-4aaf-8a82-194bcee64987)
 
-![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/b54d6e6c-c425-47f5-9e45-c62eb7510eb5)
+![OmegaMouse_Lite_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/7b0919e6-544b-4c38-bca5-3b13bf2b391a)
 
-![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/fbfb6914-4d3b-41cc-9099-8154c3f43ddd)
+![OmegaMouse_Basic_logic_chart](https://github.com/MichaelOmegatron/Omega_Mouse/assets/71417272/63f88309-35b3-4749-9ded-ba3b8daed32d)
