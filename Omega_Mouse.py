@@ -140,6 +140,24 @@ class OmegaMouseActions:
         actions.mouse_click(0)
         actions.mouse_click(0)
     
+    def omega_mouse_triple_click():
+        """Normal Triple Click when Omega Mouse is off"""
+        actions.mouse_click(0)
+        actions.mouse_click(0)
+        actions.mouse_click(0)
+    
+    def omega_mouse_control_click():
+        """Control Click when Omega Mouse is off"""
+        actions.key("ctrl:down")
+        actions.mouse_click(0)
+        actions.key("ctrl:up")
+
+    def omega_mouse_shift_click():
+        """Shift Click when Omega Mouse is off"""
+        actions.key("shift:down")
+        actions.mouse_click(0)
+        actions.key("shift:up")
+
     def omega_mouse_relocate():
         """Does nothing when Omega Mouse is off"""
         print("Does nothing when Omega Mouse is off")

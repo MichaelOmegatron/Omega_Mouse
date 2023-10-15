@@ -7,7 +7,7 @@ settings():
 	# 1 = Lite
 	# 2 = Basic
 	user.omega_mouse_mode = 0
-		
+	
 # ----- Omega Mouse Cursor Time Intervals -----
 # Applies to all modes. No restart required with change, only save.
 # Total between both settings should be under 1800ms. Must use quotes in value.
@@ -35,6 +35,9 @@ omega restart: user.omega_mouse_restart()
 (yum | gum): user.omega_mouse_left_click()
 (yummer | gummer): user.omega_mouse_left_modup_click()
 twill: user.omega_mouse_double_click()
+trio: user.omega_mouse_triple_click()
+con: user.omega_mouse_control_click()
+shill: user.omega_mouse_shift_click()
 relo: user.omega_mouse_relocate()
 #drag: {overrides default mouse_drag in mouse.py for Omega Mouse functionality}
 drop: user.mouse_drag_end()

@@ -56,6 +56,30 @@ class OmegaMouseLiteOverrides:
         actions.mouse_click(0)
         actions.tracking.control_gaze_toggle(False)
         actions.tracking.control_head_toggle(False)
+
+    def omega_mouse_triple_click():
+        """Triple Click then turn off tracking"""
+        actions.mouse_click(0)
+        actions.mouse_click(0)
+        actions.mouse_click(0)
+        actions.tracking.control_gaze_toggle(False)
+        actions.tracking.control_head_toggle(False)
+    
+    def omega_mouse_control_click():
+        """Control Click then turn off tracking"""
+        actions.key("ctrl:down")
+        actions.mouse_click(0)
+        actions.key("ctrl:up")
+        actions.tracking.control_gaze_toggle(False)
+        actions.tracking.control_head_toggle(False)
+
+    def omega_mouse_shift_click():
+        """Shift Click then turn off tracking"""
+        actions.key("shift:down")
+        actions.mouse_click(0)
+        actions.key("shift:up")
+        actions.tracking.control_gaze_toggle(False)
+        actions.tracking.control_head_toggle(False)
     
     def omega_mouse_relocate():
         """Does nothing in Lite Mode"""
