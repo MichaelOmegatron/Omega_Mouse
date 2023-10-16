@@ -14,9 +14,9 @@ Omega Mouse - Entire Overview (37:19) | Omega Mouse - Setup (5:52)
 :-: | :-:
 [![Omega Mouse for Talon Voice - Entire Overview](https://img.youtube.com/vi/lqqNrb_iNwE/hqdefault.jpg)](https://www.youtube.com/watch?v=lqqNrb_iNwE&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=5) | [![Omega Mouse for Talon Voice - Setup](https://img.youtube.com/vi/RveUpCPRUHs/hqdefault.jpg)](https://www.youtube.com/watch?v=RveUpCPRUHs&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=2)
 
-Omega Mouse - Talon File Explained (7:40) | Omega Mouse - Talon File Update - Cursor Interval Settings (8:45)
-:-: | :-:
-[![Omega Mouse for Talon Voice - Talon File Explained](https://img.youtube.com/vi/nyFWQ-anQSY/hqdefault.jpg)](https://www.youtube.com/watch?v=nyFWQ-anQSY&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=3) | [![Omega Mouse for Talon Voice - Talon File Update - Cursor Interval Settings](https://img.youtube.com/vi/ediu4mcnQpM/hqdefault.jpg)](https://www.youtube.com/watch?v=ediu4mcnQpM&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=4)
+Omega Mouse - Talon File Explained (7:40) | Omega Mouse - Talon File Update - Cursor Interval Settings (8:45) | Omega Mouse - Update - 3 Commands + Overrides (3:45)
+:-: | :-: | :-:
+[![Omega Mouse for Talon Voice - Talon File Explained](https://img.youtube.com/vi/nyFWQ-anQSY/hqdefault.jpg)](https://www.youtube.com/watch?v=nyFWQ-anQSY&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=3) | [![Omega Mouse for Talon Voice - Talon File Update - Cursor Interval Settings](https://img.youtube.com/vi/ediu4mcnQpM/hqdefault.jpg)](https://www.youtube.com/watch?v=ediu4mcnQpM&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=4) | [![Omega Mouse for Talon Voice - Update - 3 Commands + Overrides](https://img.youtube.com/vi/_HO55Qlxaws/hqdefault.jpg)](https://www.youtube.com/watch?v=_HO55Qlxaws&list=PLYFXZrgB8gIeVM7SnZI4NRcg5NEDfN9xi&index=8)
 
 Omega Mouse - Full Mode Spotlight (12:15) | Omega Mouse - Lite Mode Spotlight (5:44) | Omega Mouse - Basic Mode Spotlight (7:41)
 :-: | :-: | :-:
